@@ -1,78 +1,80 @@
-import { StatusBar } from 'expo-status-bar'; // Import StatusBar
 import React, { useState } from 'react';
-import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Pressable, StyleSheet, ImageBackground } from 'react-native';
 
-export default function App() {
+export function Signup() {
     const [fullname, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [repassword, setRePassword] = useState('');
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.signupStyle}>Sign up!</Text>
-            <View style={styles.signUpContainer}>
-                <TextInput
-                    style={styles.inputField}
-                    placeholder="Full Name"
-                    value={fullname}
-                    onChangeText={text => setFullName(text)}
-                />
-                <TextInput
-                    style={styles.inputField}
-                    placeholder="Email"
-                    value={email}
-                    onChangeText={text => setEmail(text)}
-                />
-                <TextInput
-                    style={styles.inputField}
-                    placeholder="Password"
-                    secureTextEntry={true}
-                    value={password}
-                    onChangeText={text => setPassword(text)}
-                />
-                <TextInput
-                    style={styles.inputField}
-                    placeholder="Re-type Password"
-                    secureTextEntry={true}
-                    value={repassword}
-                    onChangeText={text => setRePassword(text)}
-                />
-                <Text>By signing up, you accept the <Text style={styles.signupLink}>Terms of Service</Text> and <Text style={styles.signupLink}>Privacy Policy</Text>.</Text>
-                <Pressable
-                    style={({ pressed }) => [
-                        {
-                            backgroundColor: pressed ? 'darkblue' : '#3B4B69',
-                        },
-                        styles.loginButton,
-                    ]}
-                    onPress={() => {
-                        // Handle sign-up action here
-                    }}
-                >
-                    {({ pressed }) => (
-                        <Text style={styles.loginButtonText}>
-                            {pressed ? 'Signing Up...' : 'Sign Up'}
-                        </Text>
-                    )}
-                </Pressable>
+        <ImageBackground
+            source={require('.././assets/SIGNUPBG.png')}
+            style={styles.backgroundImage}
+        >
+            <View style={styles.container}>
+                <Text style={styles.signupStyle}>Sign up!</Text>
+                <View style={styles.signUpContainer}>
+                    <TextInput
+                        style={styles.inputField}
+                        placeholder="Full Name"
+                        value={fullname}
+                        onChangeText={text => setFullName(text)}
+                    />
+                    <TextInput
+                        style={styles.inputField}
+                        placeholder="Email"
+                        value={email}
+                        onChangeText={text => setEmail(text)}
+                    />
+                    <TextInput
+                        style={styles.inputField}
+                        placeholder="Password"
+                        secureTextEntry={true}
+                        value={password}
+                        onChangeText={text => setPassword(text)}
+                    />
+                    <TextInput
+                        style={styles.inputField}
+                        placeholder="Re-type Password"
+                        secureTextEntry={true}
+                        value={repassword}
+                        onChangeText={text => setRePassword(text)}
+                    />
+                    <Text>By signing up, you accept the <Text style={styles.signupLink}>Terms of Service</Text> and <Text style={styles.signupLink}>Privacy Policy</Text>.</Text>
+                    <Pressable
+                        style={({ pressed }) => [
+                            {
+                                backgroundColor: pressed ? 'darkblue' : '#3B4B69',
+                            },
+                            styles.loginButton,
+                        ]}
+                        onPress={() => {
+                            // Handle sign-up action here
+                        }}
+                    >
+                        {({ pressed }) => (
+                            <Text style={styles.loginButtonText}>
+                                {pressed ? 'Signing Up...' : 'Sign Up'}
+                            </Text>
+                        )}
+                    </Pressable>
+                </View>
+                <View style={styles.signupContainer}>
+                    <Text style={styles.signupText}>
+                        Already have an account? <Text style={styles.signupLink}>Log in</Text>
+                    </Text>
+                </View>
             </View>
-            <View style={styles.signupContainer}>
-                <Text style={styles.signupText}>
-                    Already have an account? <Text style={styles.signupLink}>Log in</Text>
-                </Text>
-            </View>
-            <StatusBar style="auto" />
-        </View>
+        </ImageBackground>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F4F6F1',
         alignItems: 'center',
-        justifyContent: 'flex-start',
+        justifyContent: 'center', // Center vertically
         padding: 20,
     },
     signupStyle: {

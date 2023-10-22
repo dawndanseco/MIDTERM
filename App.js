@@ -1,8 +1,9 @@
+// App.js
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Welcome from './components/Welcome';
 import Login from './components/Login';
-import Signup from './components/Signup';
+import { Signup } from './components/Signup'; // Import Signup as a named export
 
 const App = () => {
   return (
