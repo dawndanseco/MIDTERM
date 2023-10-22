@@ -14,56 +14,58 @@ export function Signup() {
         >
             <View style={styles.container}>
                 <Text style={styles.signupStyle}>Sign up!</Text>
-                <View style={styles.signUpContainer}>
-                    <TextInput
-                        style={styles.inputField}
-                        placeholder="Full Name"
-                        value={fullname}
-                        onChangeText={text => setFullName(text)}
-                    />
-                    <TextInput
-                        style={styles.inputField}
-                        placeholder="Email"
-                        value={email}
-                        onChangeText={text => setEmail(text)}
-                    />
-                    <TextInput
-                        style={styles.inputField}
-                        placeholder="Password"
-                        secureTextEntry={true}
-                        value={password}
-                        onChangeText={text => setPassword(text)}
-                    />
-                    <TextInput
-                        style={styles.inputField}
-                        placeholder="Re-type Password"
-                        secureTextEntry={true}
-                        value={repassword}
-                        onChangeText={text => setRePassword(text)}
-                    />
-                    <Text>By signing up, you accept the <Text style={styles.signupLink}>Terms of Service</Text> and <Text style={styles.signupLink}>Privacy Policy</Text>.</Text>
-                    <Pressable
-                        style={({ pressed }) => [
-                            {
-                                backgroundColor: pressed ? 'darkblue' : '#3B4B69',
-                            },
-                            styles.loginButton,
-                        ]}
-                        onPress={() => {
-                            // Handle sign-up action here
-                        }}
-                    >
-                        {({ pressed }) => (
-                            <Text style={styles.loginButtonText}>
-                                {pressed ? 'Signing Up...' : 'Sign Up'}
-                            </Text>
-                        )}
-                    </Pressable>
-                </View>
-                <View style={styles.signupContainer}>
-                    <Text style={styles.signupText}>
-                        Already have an account? <Text style={styles.signupLink}>Log in</Text>
-                    </Text>
+                <View style={styles.centeredContainer}>
+                    <View style={styles.signUpContainer}>
+                        <TextInput
+                            style={styles.inputField}
+                            placeholder="Full Name"
+                            value={fullname}
+                            onChangeText={text => setFullName(text)}
+                        />
+                        <TextInput
+                            style={styles.inputField}
+                            placeholder="Email"
+                            value={email}
+                            onChangeText={text => setEmail(text)}
+                        />
+                        <TextInput
+                            style={styles.inputField}
+                            placeholder="Password"
+                            secureTextEntry={true}
+                            value={password}
+                            onChangeText={text => setPassword(text)}
+                        />
+                        <TextInput
+                            style={styles.inputField}
+                            placeholder="Re-type Password"
+                            secureTextEntry={true}
+                            value={repassword}
+                            onChangeText={text => setRePassword(text)}
+                        />
+                        <Text>By signing up, you accept the <Text style={styles.signupLink}>Terms of Service</Text> and <Text style={styles.signupLink}>Privacy Policy</Text>.</Text>
+                        <Pressable
+                            style={({ pressed }) => [
+                                {
+                                    backgroundColor: pressed ? 'darkblue' : '#3B4B69',
+                                },
+                                styles.loginButton,
+                            ]}
+                            onPress={() => {
+                                // Handle sign-up action here
+                            }}
+                        >
+                            {({ pressed }) => (
+                                <Text style={styles.loginButtonText}>
+                                    {pressed ? 'Signing Up...' : 'Sign Up'}
+                                </Text>
+                            )}
+                        </Pressable>
+                    </View>
+                    <View style={styles.signupContainer}>
+                        <Text style={styles.signupText}>
+                            Already have an account? <Text style={styles.signupLink}>Log in</Text>
+                        </Text>
+                    </View>
                 </View>
             </View>
         </ImageBackground>
@@ -80,6 +82,11 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 20,
     },
+    centeredContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     signupStyle: {
         color: 'black',
         fontSize: 25,
@@ -90,8 +97,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#B3D2DD',
         padding: 20,
         borderRadius: 20,
-        marginTop: 20,
-        width: '80%',
+        width: '90%',
     },
     loginLabel: {
         fontSize: 18,
@@ -105,13 +111,17 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 13,
         paddingHorizontal: 10,
-        marginBottom: 10,
+        marginBottom: 20,
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: 'grey',
     },
     loginButton: {
         padding: 15,
         borderRadius: 13,
         alignItems: 'center',
         backgroundColor: '#3B4B69',
+        marginTop: 20,
     },
     loginButtonText: {
         color: 'white',
