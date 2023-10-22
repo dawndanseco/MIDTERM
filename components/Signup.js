@@ -71,10 +71,13 @@ export function Signup() {
 }
 
 const styles = StyleSheet.create({
+    backgroundImage: {
+        flex: 1,
+        width: '100%',
+        height: '100%',
+    },
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center', // Center vertically
         padding: 20,
     },
     signupStyle: {
