@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
         textDecorationLine: 'underline',
         fontWeight: 'bold',
         marginTop: 20,
+        textAlign: 'center',
     },
     imageStyle: {
         width: 70,
