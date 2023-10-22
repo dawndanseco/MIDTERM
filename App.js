@@ -8,7 +8,7 @@ import { Signup } from './components/Signup'; // Import Signup as a named export
 const App = () => {
   return (
     <View style={styles.container}>
-      <Signup />
+      <Login />
     </View>
   );
 }

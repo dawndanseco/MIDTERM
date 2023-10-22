@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 30,
         borderRadius: 50,
-        marginTop: 200,
+        marginTop: 130,
     },
     loginLabel: {
         fontSize: 18,
@@ -112,7 +112,9 @@ const styles = StyleSheet.create({
         borderRadius: 13,
         paddingHorizontal: 10,
         marginBottom: 10,
-        marginTop: 10,
+        marginTop: 20,
+        fontSize: 18,
+        color: 'grey',
     },
     loginButton: {
         padding: 15,
