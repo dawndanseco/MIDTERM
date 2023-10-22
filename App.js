@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import Welcome from './components/Welcome';
 import Login from './components/Login';
+import Signup from './components/Signup';
 
 const App = () => {
   return (
     <View style={styles.container}>
-      <Login />
+      <Signup />
     </View>
   );
 }

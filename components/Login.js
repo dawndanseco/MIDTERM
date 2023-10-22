@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        padding: 20,
+        padding: 30,
     },
     welcomeStyle: {
         color: 'black',
@@ -93,11 +93,10 @@ const styles = StyleSheet.create({
         marginLeft: 10,
     },
     loginContainer: {
-        backgroundColor: '#B3D2DD',
         flex: 1,
-        padding: 50,
+        padding: 30,
         borderRadius: 50,
-        marginTop: 150,
+        marginTop: 200,
     },
     loginLabel: {
         fontSize: 18,
