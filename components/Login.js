@@ -8,7 +8,7 @@ const Login = () => {
 
     return (
         <ImageBackground
-            source={require('.././assets/LOGO.png')}
+            source={require('.././assets/LOGINBG.png')}
             style={styles.backgroundImage}
         >
             <View style={styles.container}>
