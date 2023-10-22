@@ -1,12 +1,16 @@
-import { StyleSheet, Text, View, TextInput, Pressable, ImageBackground } from 'react-native';
 import React, { useState } from 'react';
+import { View, Text, TextInput, Pressable, StyleSheet, ImageBackground, Image } from 'react-native';
 
-export default function Login() {
+const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isPressed, setIsPressed] = useState(false);
 
     return (
-        <ImageBackground source={require('.././assets/LOGINBG.png')} style={styles.backgroundImage}>
+        <ImageBackground
+            source={require('.././assets/LOGO.png')}
+            style={styles.backgroundImage}
+        >
             <View style={styles.container}>
                 <Text style={styles.welcomeStyle}>Welcome!</Text>
                 <Text style={styles.textStyle}>
@@ -133,3 +137,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 });
+
+export default Login;

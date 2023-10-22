@@ -1,21 +1,20 @@
 import React from 'react';
-import Welcome from './components/Welcome';
+import { View, StyleSheet } from 'react-native';
 import Login from './components/Login';
 
-export default function App() {
+const App = () => {
   return (
-    <div style={styles.container}>
+    <View style={styles.container}>
       <Login />
-    </div>
+    </View>
   );
 }
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: '#F4F6F1',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100vh',
   },
-};
+});
+
+export default App;
