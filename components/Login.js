@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         fontStyle: 'italic',
         textDecorationLine: 'underline',
         fontWeight: 'bold',
-        marginTop: 20,
+        marginTop: 60,
         textAlign: 'center',
     },
     imageStyle: {
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 30,
         borderRadius: 50,
-        marginTop: 130,
+        marginTop: 90,
     },
     loginLabel: {
         fontSize: 18,
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     signupContainer: {
-        marginTop: 20,
+        marginTop: 10,
         alignSelf: 'center',
     },
     signupText: {
