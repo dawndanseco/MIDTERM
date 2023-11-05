@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Pressable, StyleSheet, ImageBackground, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Homescreen = () => {
     const [income, setIncome] = useState(0);
@@ -17,11 +18,17 @@ const Homescreen = () => {
                 <View style={styles.incomeExpensesContainer}>
                     <View style={styles.incomeBox}>
                         <Text style={styles.boxTitle}>Income</Text>
-                        <Text style={styles.amount}>{income}</Text>
+                        <View style={styles.amountContainer}>
+                            <Text style={styles.amount}>{income}</Text>
+                            <Icon name="arrow-up" size={20} color="white" />
+                        </View>
                     </View>
                     <View style={styles.expensesBox}>
                         <Text style={styles.boxTitle}>Expenses</Text>
-                        <Text style={styles.amount}>{expenses}</Text>
+                        <View style={styles.amountContainer}>
+                            <Text style={styles.amount}>{expenses}</Text>
+                            <Icon name="arrow-down" size={20} color="white" />
+                        </View>
                     </View>
                 </View>
             </View>
@@ -39,43 +46,40 @@ const styles = StyleSheet.create({
         padding: 30,
     },
     boxTitle: {
-        color: '#3B4B69',
         fontSize: 15,
         color: 'white',
         fontWeight: 'bold',
     },
-    imageStyle: {
-        width: 70,
-        height: 70,
-        marginLeft: 10,
-    },
     greetingStyle: {
-        color: 'black',
         fontSize: 25,
         fontWeight: 'bold',
         marginBottom: 5,
     },
     lineSeparator: {
-        height: 3, 
-        backgroundColor: '#6B88A5', 
-        marginVertical: 10, 
+        height: 3,
+        backgroundColor: '#6B88A5',
+        marginVertical: 10,
     },
     incomeExpensesContainer: {
-        flexDirection: 'row', 
-        justifyContent: 'space-between', 
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     incomeBox: {
-        flex: 1, 
+        flex: 1,
         backgroundColor: '#6B88A5',
         padding: 20,
         borderRadius: 10,
-        marginRight: 10, 
+        marginRight: 10,
     },
     expensesBox: {
-        flex: 1, 
+        flex: 1,
         backgroundColor: '#3B4B69',
         padding: 20,
         borderRadius: 10,
+    },
+    amountContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
     },
 });
 
