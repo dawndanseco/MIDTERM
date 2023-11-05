@@ -1,14 +1,14 @@
-// App.js
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Welcome from './components/Welcome';
 import Login from './components/Login';
-import { Signup } from './components/Signup'; // Import Signup as a named export
+import Signup  from './components/Signup';
+import Homescreen from './components/Homescreen';
 
 const App = () => {
   return (
     <View style={styles.container}>
-      <Login />
+      <Homescreen />
     </View>
   );
 }
