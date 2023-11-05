@@ -12,11 +12,16 @@ const Homescreen = () => {
             style={styles.backgroundImage}
         >
             <View style={styles.container}>
-                <Text style={styles.greetingStyle}>Good Morning,</Text>
+                <Text style={styles.greetingStyle}>Good Morning, User</Text>
                 <View style={styles.lineSeparator}></View>
 
-                <View style={styles.dateContainer>
-                    <View></View>
+                <View style={styles.oblongContainer}>
+                    <View style={styles.oblong}>
+                        <Text style={styles.oblongText}>November</Text>
+                    </View>
+                    <View style={styles.oblong}>
+                        <Text style={styles.oblongText}>Today</Text>
+                    </View>  {/* Second oblong */}
                 </View>
                 <View style={styles.incomeExpensesContainer}>
                     <View style={styles.incomeBox}>
@@ -59,16 +64,27 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     lineSeparator: {
-        height: 3,
+        height: 5,
         backgroundColor: '#6B88A5',
         marginVertical: 10,
+        borderRadius: 13,
     },
-    dateContainer: {
+    oblongContainer: {
+        flexDirection: 'row', 
+        marginBottom: 10,
+    },
+    oblong: {
         height: 26,
-        width: 129,
+        width: 130,
         borderRadius: 13,
         backgroundColor: '#3B4B69',
-        marginBottom: 10, 
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    oblongText: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: 'bold',
     },
     incomeExpensesContainer: {
         flexDirection: 'row',
@@ -78,14 +94,14 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#6B88A5',
         padding: 20,
-        borderRadius: 13,
+        borderRadius: 10,
         marginRight: 10,
     },
     expensesBox: {
         flex: 1,
         backgroundColor: '#3B4B69',
         padding: 20,
-        borderRadius: 13,
+        borderRadius: 10,
     },
     amountContainer: {
         flexDirection: 'row',
