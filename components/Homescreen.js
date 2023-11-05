@@ -41,11 +41,8 @@ const styles = StyleSheet.create({
     boxTitle: {
         color: '#3B4B69',
         fontSize: 15,
-        fontStyle: 'italic',
-        textDecorationLine: 'underline',
+        color: 'white',
         fontWeight: 'bold',
-        marginTop: 60,
-        textAlign: 'center',
     },
     imageStyle: {
         width: 70,
@@ -59,23 +56,23 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     lineSeparator: {
-        height: 3, // Increase the height to make the separator thicker
-        backgroundColor: '#6B88A5', // You can adjust the color and styling of the line
-        marginVertical: 10, // Adjust the spacing as needed
+        height: 3, 
+        backgroundColor: '#6B88A5', 
+        marginVertical: 10, 
     },
     incomeExpensesContainer: {
-        flexDirection: 'row', // Display the income and expenses boxes side by side
-        justifyContent: 'space-between', // Adjust the spacing between the boxes
+        flexDirection: 'row', 
+        justifyContent: 'space-between', 
     },
     incomeBox: {
-        flex: 1, // Make the income box take half of the available width
+        flex: 1, 
         backgroundColor: '#6B88A5',
         padding: 20,
         borderRadius: 10,
-        marginRight: 10, // Adjust the spacing between the boxes
+        marginRight: 10, 
     },
     expensesBox: {
-        flex: 1, // Make the expenses box take half of the available width
+        flex: 1, 
         backgroundColor: '#3B4B69',
         padding: 20,
         borderRadius: 10,
