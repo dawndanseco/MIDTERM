@@ -12,30 +12,31 @@ const Homescreen = () => {
             style={styles.backgroundImage}
         >
             <View style={styles.container}>
-                <Text style={styles.greetingStyle}>Good Morning, User</Text>
+                <Text style={styles.greetingStyle}>Good Morning,User</Text>
                 <View style={styles.lineSeparator}></View>
 
                 <View style={styles.oblongContainer}>
                     <View style={styles.oblong}>
                         <Text style={styles.oblongText}>November</Text>
                     </View>
+                    <View style={styles.oblongSpace}></View> 
                     <View style={styles.oblong}>
                         <Text style={styles.oblongText}>Today</Text>
-                    </View>  {/* Second oblong */}
+                    </View> 
                 </View>
                 <View style={styles.incomeExpensesContainer}>
                     <View style={styles.incomeBox}>
                         <Text style={styles.boxTitle}>Income</Text>
                         <View style={styles.amountContainer}>
-                            <Text style={styles.amount}>{income}</Text>
                             <Icon name="arrow-up" size={14} color="white" />
+                            <Text style={styles.amount}>{income}</Text>
                         </View>
                     </View>
                     <View style={styles.expensesBox}>
                         <Text style={styles.boxTitle}>Expenses</Text>
                         <View style={styles.amountContainer}>
-                            <Text style={styles.amount}>{expenses}</Text>
                             <Icon name="arrow-down" size={14} color="white" />
+                            <Text style={styles.amount}>{expenses}</Text>
                         </View>
                     </View>
                 </View>
@@ -70,7 +71,8 @@ const styles = StyleSheet.create({
         borderRadius: 13,
     },
     oblongContainer: {
-        flexDirection: 'row', 
+        flexDirection: 'row',
+        alignItems: 'center',
         marginBottom: 10,
     },
     oblong: {
@@ -80,6 +82,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#3B4B69',
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    oblongSpace: {
+        width: 80,
     },
     oblongText: {
         color: 'white',
