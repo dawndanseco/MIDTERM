@@ -12,7 +12,7 @@ const Homescreen = () => {
         >
             <View style={styles.container}>
                 <Text style={styles.greetingStyle}>Good Morning,</Text>
-                <View style={styles.lineSeparator}></View> {/* Add a line separator */}
+                <View style={styles.lineSeparator}></View>
 
                 <View style={styles.incomeExpensesContainer}>
                     <View style={styles.incomeBox}>
