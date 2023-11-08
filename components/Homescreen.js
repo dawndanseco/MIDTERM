@@ -86,9 +86,9 @@ const Homescreen = () => {
                             // Handle Add button press
                         }}
                     >
-                        <Svg width="60" height="70" viewBox="0 0 40 40">
-                            <Circle cx="20" cy="20" r="19" stroke="white" strokeWidth="2" fill="#3B4B69" />
-                            <Path d="M18 12V28M12 18H28" stroke="white" strokeWidth="2" />
+                        <Svg width="80" height="80" viewBox="0 0 40 40">
+                            <Circle cx="20" cy="20" r="19" stroke="#3B4B69" strokeWidth="2" fill="#6B88A5" />
+                            <Path d="M20 12V28M12 20H28" stroke="white" strokeWidth="2" />
                         </Svg>
                     </Pressable>
                 </View>
