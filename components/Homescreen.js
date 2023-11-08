@@ -34,15 +34,15 @@ const Homescreen = () => {
                     <View style={styles.incomeBox}>
                         <Text style={styles.boxTitle}>Income</Text>
                         <View style={styles.amountContainer}>
-                            <Icon name="arrow-up" size={14} color="white" />
-                            <Text style={styles.amount}>{income}</Text>
+                            <Icon name="arrow-up" size={25} color="white" />
+                            <Text style={styles.amount}> ₱ {income}</Text>
                         </View>
                     </View>
                     <View style={styles.expensesBox}>
                         <Text style={styles.boxTitle}>Expenses</Text>
                         <View style={styles.amountContainer}>
-                            <Icon name="arrow-down" size={14} color="white" />
-                            <Text style={styles.amount}>{expenses}</Text>
+                            <Icon name="arrow-down" size={25} color="white" />
+                            <Text style={styles.amount}> ₱ {expenses}</Text>
                         </View>
                     </View>
                 </View>
@@ -53,7 +53,6 @@ const Homescreen = () => {
                         <Text style={styles.todaysExTextRecord}>No record for today.</Text>
                     </View>
                 </View>
-                {/* Add a line below the todaysExpenseContainer */}
                 <View style={styles.lineSeparator}></View>
             </View>
         </ImageBackground>
@@ -121,7 +120,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#6B88A5',
         padding: 20,
         borderRadius: 10,
-        marginRight: 10,
+        marginRight: 30,
         shadowColor: 'black',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.2,
@@ -138,6 +137,11 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 2,
         elevation: 5,
+    },
+    amount: {
+        fontSize: 28,
+        color :'white',
+        fontWeight: 'bold',
     },
     amountContainer: {
         flexDirection: 'row',
