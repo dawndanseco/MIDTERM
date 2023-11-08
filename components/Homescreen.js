@@ -18,7 +18,8 @@ const Homescreen = () => {
             style={styles.backgroundImage}
         >
             <View style={styles.container}>
-                <Text style={styles.greetingStyle}>Good Morning, User</Text>
+                <Text style={styles.greetingStyle}>Good Morning, </Text>
+                <Text style={styles.greetingStyle}>Dawn Danseco!</Text>
                 <View style={styles.lineSeparator}></View>
 
                 <View style={styles.MonthandDateContainer}>
@@ -55,23 +56,29 @@ const Homescreen = () => {
                 </View>
                 <View style={styles.lineSeparator}></View>
             </View>
+            <ImageBackground
+                source={require('.././assets/welcomereminder.png')}
+                style={styles.backgroundImageReminder}
+            ></ImageBackground>
         </ImageBackground>
     );
 };
 
 const styles = StyleSheet.create({
     backgroundImage: {
-        flex: 1,
-        resizeMode: 'contain',
+        flex: 10,
+        resizeMode: 'cover ',
     },
     container: {
         flex: 1,
         padding: 30,
+        marginTop: 40,
     },
     boxTitle: {
         fontSize: 15,
         color: 'white',
         fontWeight: 'bold',
+        alignSelf: 'flex-start', 
     },
     greetingStyle: {
         fontSize: 25,
@@ -87,7 +94,7 @@ const styles = StyleSheet.create({
     MonthandDateContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginBottom: 30,
+        marginBottom: 20,
     },
     MonthandDate: {
         height: 26,
@@ -103,7 +110,7 @@ const styles = StyleSheet.create({
         elevation: 5,
     },
     oblongSpace: {
-        width: 80,
+        width: 40,
     },
     MonthandDateText: {
         color: 'white',
@@ -119,7 +126,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#6B88A5',
         padding: 20,
-        borderRadius: 10,
+        borderRadius: 13,
         marginRight: 30,
         shadowColor: 'black',
         shadowOffset: { width: 0, height: 2 },
@@ -131,7 +138,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#3B4B69',
         padding: 20,
-        borderRadius: 10,
+        borderRadius: 13,
         shadowColor: 'black',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.2,
@@ -140,7 +147,7 @@ const styles = StyleSheet.create({
     },
     amount: {
         fontSize: 28,
-        color :'white',
+        color: 'white',
         fontWeight: 'bold',
     },
     amountContainer: {
@@ -149,15 +156,15 @@ const styles = StyleSheet.create({
     },
     todaysExpenseContainer: {
         alignItems: 'flex-start',
-        marginTop: 10,
+        marginTop: 5,
     },
     dateText: {
         fontSize: 15,
         fontWeight: 'bold',
-        marginTop: 20,
+        marginTop: 10,
     },
     todaysEx: {
-        width: 340,
+        width: 300,
         height: 60,
         backgroundColor: '#B3D2DD',
         marginTop: 10,
@@ -184,6 +191,13 @@ const styles = StyleSheet.create({
         marginTop: 5,
         alignSelf: 'center',
     },
+    backgroundImageReminder: {
+        height: 210,
+        width: 271,
+        position: 'absolute', 
+        top: 470,
+        left: 65,
+    }
 });
 
 export default Homescreen;

@@ -43,7 +43,6 @@ const Login = () => {
                             styles.loginButton,
                         ]}
                         onPress={() => {
-                            // Handle login action here
                         }}
                     >
                         {({ pressed }) => (
@@ -71,6 +70,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 30,
+        marginTop: 40,
     },
     welcomeStyle: {
         color: 'black',
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 30,
         borderRadius: 50,
-        marginTop: 90,
+        marginTop: 130,
     },
     loginLabel: {
         fontSize: 18,

@@ -75,12 +75,12 @@ export function Signup() {
 const styles = StyleSheet.create({
     backgroundImage: {
         flex: 1,
-        width: '100%',
-        height: '100%',
+        resizeMode: 'cover',
     },
     container: {
         flex: 1,
         padding: 20,
+        marginTop: 40,
     },
     centeredContainer: {
         flex: 1,
