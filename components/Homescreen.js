@@ -53,6 +53,8 @@ const Homescreen = () => {
                         <Text style={styles.todaysExTextRecord}>No record for today.</Text>
                     </View>
                 </View>
+                {/* Add a line below the todaysExpenseContainer */}
+                <View style={styles.lineSeparator}></View>
             </View>
         </ImageBackground>
     );
@@ -86,7 +88,7 @@ const styles = StyleSheet.create({
     MonthandDateContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginBottom: 10,
+        marginBottom: 30,
     },
     MonthandDate: {
         height: 26,
@@ -112,6 +114,7 @@ const styles = StyleSheet.create({
     incomeExpensesContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+        height: 90,
     },
     incomeBox: {
         flex: 1,
@@ -130,11 +133,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#3B4B69',
         padding: 20,
         borderRadius: 10,
-        shadowColor: 'black', 
-        shadowOffset: { width: 0, height: 2 }, 
-        shadowOpacity: 0.2, 
-        shadowRadius: 2, 
-        elevation: 5, 
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+        elevation: 5,
     },
     amountContainer: {
         flexDirection: 'row',
@@ -142,7 +145,7 @@ const styles = StyleSheet.create({
     },
     todaysExpenseContainer: {
         alignItems: 'flex-start',
-        marginTop: 20,
+        marginTop: 10,
     },
     dateText: {
         fontSize: 15,
@@ -155,11 +158,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#B3D2DD',
         marginTop: 10,
         borderRadius: 13,
-        shadowColor: 'black', 
-        shadowOffset: { width: 0, height: 2 }, 
-        shadowOpacity: 0.2, 
-        shadowRadius: 2, 
-        elevation: 5, 
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+        elevation: 5,
+        marginBottom: 10,
     },
     todaysExText: {
         fontSize: 12,
