@@ -6,7 +6,11 @@ const Homescreen = () => {
     const [income, setIncome] = useState(0);
     const [expenses, setExpenses] = useState(0);
 
-    const currentDate = new Date().toLocaleDateString();
+    const currentDate = new Date().toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+    });
 
     return (
         <ImageBackground
@@ -17,13 +21,13 @@ const Homescreen = () => {
                 <Text style={styles.greetingStyle}>Good Morning, User</Text>
                 <View style={styles.lineSeparator}></View>
 
-                <View style={styles.oblongContainer}>
-                    <View style={styles.oblong}>
-                        <Text style={styles.oblongText}>November</Text>
+                <View style={styles.MonthandDateContainer}>
+                    <View style={styles.MonthandDate}>
+                        <Text style={styles.MonthandDateText}>November</Text>
                     </View>
                     <View style={styles.oblongSpace}></View>
-                    <View style={styles.oblong}>
-                        <Text style={styles.oblongText}>Today</Text>
+                    <View style={styles.MonthandDate}>
+                        <Text style={styles.MonthandDateText}>Today</Text>
                     </View>
                 </View>
                 <View style={styles.incomeExpensesContainer}>
@@ -42,10 +46,12 @@ const Homescreen = () => {
                         </View>
                     </View>
                 </View>
-                <View style={styles.todayExpenseContainer}>
+                <View style={styles.todaysExpenseContainer}>
                     <Text style={styles.dateText}>{currentDate}</Text>
-                    {/* Add a rectangle beneath the date */}
-                    <View style={styles.rectangle}></View>
+                    <View style={styles.todaysEx}>
+                        <Text style={styles.todaysExText}>Today's Expenses:</Text>
+                        <Text style={styles.todaysExTextRecord}>No record for today.</Text>
+                    </View>
                 </View>
             </View>
         </ImageBackground>
@@ -77,23 +83,28 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         borderRadius: 13,
     },
-    oblongContainer: {
+    MonthandDateContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         marginBottom: 10,
     },
-    oblong: {
+    MonthandDate: {
         height: 26,
         width: 130,
         borderRadius: 13,
         backgroundColor: '#3B4B69',
         justifyContent: 'center',
         alignItems: 'center',
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+        elevation: 5,
     },
     oblongSpace: {
         width: 80,
     },
-    oblongText: {
+    MonthandDateText: {
         color: 'white',
         fontSize: 16,
         fontWeight: 'bold',
@@ -108,32 +119,62 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 10,
         marginRight: 10,
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+        elevation: 5,
     },
     expensesBox: {
         flex: 1,
         backgroundColor: '#3B4B69',
         padding: 20,
         borderRadius: 10,
+        shadowColor: 'black', 
+        shadowOffset: { width: 0, height: 2 }, 
+        shadowOpacity: 0.2, 
+        shadowRadius: 2, 
+        elevation: 5, 
     },
     amountContainer: {
         flexDirection: 'row',
         alignItems: 'center',
     },
-    todayExpense: {
+    todaysExpenseContainer: {
         alignItems: 'flex-start',
-        marginBottom: 10,
+        marginTop: 20,
     },
     dateText: {
         fontSize: 15,
         fontWeight: 'bold',
         marginTop: 20,
     },
-    rectangle: {
+    todaysEx: {
         width: 340,
-        height: 54, 
-        backgroundColor: '#B3D2DD', 
+        height: 60,
+        backgroundColor: '#B3D2DD',
         marginTop: 10,
         borderRadius: 13,
+        shadowColor: 'black', 
+        shadowOffset: { width: 0, height: 2 }, 
+        shadowOpacity: 0.2, 
+        shadowRadius: 2, 
+        elevation: 5, 
+    },
+    todaysExText: {
+        fontSize: 12,
+        fontWeight: 'bold',
+        color: '#3B4B69',
+        marginLeft: 10,
+        marginTop: 10,
+    },
+    todaysExTextRecord: {
+        fontSize: 12,
+        fontWeight: 'bold',
+        color: '#3B4B69',
+        marginLeft: 10,
+        marginTop: 5,
+        alignSelf: 'center',
     },
 });
 
