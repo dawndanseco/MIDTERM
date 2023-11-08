@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Pressable, StyleSheet, ImageBackground, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Svg, { Circle, Path } from 'react-native-svg';
 
 const Homescreen = () => {
     const [income, setIncome] = useState(0);
@@ -55,6 +56,24 @@ const Homescreen = () => {
                     </View>
                 </View>
                 <View style={styles.lineSeparator}></View>
+
+                {/* Circular Pressable button with a plus sign */}
+                <Pressable
+                    style={({ pressed }) => [
+                        {
+                            backgroundColor: pressed ? 'darkblue' : '#3B4B69',
+                        },
+                        styles.circularButton,
+                    ]}
+                    onPress={() => {
+                        // Handle Add button press
+                    }}
+                >
+                    <Svg width="40" height="40" viewBox="0 0 40 40">
+                        <Circle cx="20" cy="20" r="19" stroke="white" strokeWidth="2" fill="#3B4B69" />
+                        <Path d="M18 12V28M12 18H28" stroke="white" strokeWidth="2" />
+                    </Svg>
+                </Pressable>
             </View>
             <ImageBackground
                 source={require('.././assets/welcomereminder.png')}
@@ -66,8 +85,8 @@ const Homescreen = () => {
 
 const styles = StyleSheet.create({
     backgroundImage: {
-        flex: 10,
-        resizeMode: 'cover ',
+        flex: 1,
+        resizeMode: 'cover',
     },
     container: {
         flex: 1,
@@ -78,7 +97,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: 'white',
         fontWeight: 'bold',
-        alignSelf: 'flex-start', 
+        alignSelf: 'flex-start',
     },
     greetingStyle: {
         fontSize: 25,
@@ -194,10 +213,26 @@ const styles = StyleSheet.create({
     backgroundImageReminder: {
         height: 210,
         width: 271,
-        position: 'absolute', 
+        position: 'absolute',
         top: 470,
         left: 65,
-    }
+    },
+    circularButton: {
+        height: 60,
+        width: 60,
+        borderRadius: 30,
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'absolute',
+        bottom: 20,
+        right: 20,
+        backgroundColor: '#3B4B69',
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+        elevation: 5,
+    },
 });
 
 export default Homescreen;
