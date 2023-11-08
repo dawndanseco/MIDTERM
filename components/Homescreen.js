@@ -6,23 +6,25 @@ const Homescreen = () => {
     const [income, setIncome] = useState(0);
     const [expenses, setExpenses] = useState(0);
 
+    const currentDate = new Date().toLocaleDateString();
+
     return (
         <ImageBackground
             source={require('.././assets/homescreenbg.png')}
             style={styles.backgroundImage}
         >
             <View style={styles.container}>
-                <Text style={styles.greetingStyle}>Good Morning,User</Text>
+                <Text style={styles.greetingStyle}>Good Morning, User</Text>
                 <View style={styles.lineSeparator}></View>
 
                 <View style={styles.oblongContainer}>
                     <View style={styles.oblong}>
                         <Text style={styles.oblongText}>November</Text>
                     </View>
-                    <View style={styles.oblongSpace}></View> 
+                    <View style={styles.oblongSpace}></View>
                     <View style={styles.oblong}>
                         <Text style={styles.oblongText}>Today</Text>
-                    </View> 
+                    </View>
                 </View>
                 <View style={styles.incomeExpensesContainer}>
                     <View style={styles.incomeBox}>
@@ -39,6 +41,11 @@ const Homescreen = () => {
                             <Text style={styles.amount}>{expenses}</Text>
                         </View>
                     </View>
+                </View>
+                <View style={styles.todayExpenseContainer}>
+                    <Text style={styles.dateText}>{currentDate}</Text>
+                    {/* Add a rectangle beneath the date */}
+                    <View style={styles.rectangle}></View>
                 </View>
             </View>
         </ImageBackground>
@@ -111,6 +118,22 @@ const styles = StyleSheet.create({
     amountContainer: {
         flexDirection: 'row',
         alignItems: 'center',
+    },
+    todayExpense: {
+        alignItems: 'flex-start',
+        marginBottom: 10,
+    },
+    dateText: {
+        fontSize: 15,
+        fontWeight: 'bold',
+        marginTop: 20,
+    },
+    rectangle: {
+        width: 340,
+        height: 54, 
+        backgroundColor: '#B3D2DD', 
+        marginTop: 10,
+        borderRadius: 13,
     },
 });
 
