@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Welcome from './components/Welcome';
-import Login from './components/Login';
-import Signup  from './components/Signup';
 import Homescreen from './components/Homescreen';
+import NumPad from './components/NumPad';
+import Budget from './components/Budget';
 
 const App = () => {
   return (

@@ -1,104 +1,118 @@
-
-import React, { useState } from 'react';
-import { View, Text, TextInput, Pressable, StyleSheet, ImageBackground, Image } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, ImageBackground, StyleSheet } from 'react-native';
+import { CircularButton, HomeButton, AccountButton } from './NavBar';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Svg, { Circle, Path } from 'react-native-svg';
 
 const Homescreen = () => {
-    const [income, setIncome] = useState(0);
-    const [expenses, setExpenses] = useState(0);
+  const [income, setIncome] = useState(0);
+  const [expenses, setExpenses] = useState(0);
+  const [homeData, setHomeData] = useState(null);
+  const [personData, setPersonData] = useState(null);
 
-    const currentDate = new Date().toLocaleDateString('en-US', {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric',
-    });
+  const fetchHomeData = async () => {
+    try {
+      const response = await fetch('HOME_API_ENDPOINT');
+      const data = await response.json();
+      setHomeData(data);
+    } catch (error) {
+      console.error('Error fetching Home API data:', error);
+    }
+  };
 
-    return (
-        <ImageBackground
-            source={require('.././assets/homescreenbg.png')}
-            style={styles.backgroundImage}
-        >
-            <View style={styles.container}>
-                <Text style={styles.greetingStyle}>Good Morning, </Text>
-                <Text style={styles.greetingStyle}>Dawn Danseco!</Text>
-                <View style={styles.lineSeparator}></View>
+  const fetchPersonData = async () => {
+    try {
+      const response = await fetch('PERSON_API_ENDPOINT');
+      const data = await response.json();
+      setPersonData(data);
+    } catch (error) {
+      console.error('Error fetching Person API data:', error);
+    }
+  };
 
-                <View style={styles.MonthandDateContainer}>
-                    <View style={styles.MonthandDate}>
-                        <Text style={styles.MonthandDateText}>November</Text>
-                    </View>
-                    <View style={styles.oblongSpace}></View>
-                    <View style={styles.MonthandDate}>
-                        <Text style={styles.MonthandDateText}>Today</Text>
-                    </View>
-                </View>
-                <View style={styles.incomeExpensesContainer}>
-                    <View style={styles.incomeBox}>
-                        <Text style={styles.boxTitle}>Income</Text>
-                        <View style={styles.amountContainer}>
-                            <Icon name="arrow-up" size={25} color="white" />
-                            <Text style={styles.amount}> ₱ {income}</Text>
-                        </View>
-                    </View>
-                    <View style={styles.expensesBox}>
-                        <Text style={styles.boxTitle}>Expenses</Text>
-                        <View style={styles.amountContainer}>
-                            <Icon name="arrow-down" size={25} color="white" />
-                            <Text style={styles.amount}> ₱ {expenses}</Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.todaysExpenseContainer}>
-                    <Text style={styles.dateText}>{currentDate}</Text>
-                    <View style={styles.todaysEx}>
-                        <Text style={styles.todaysExText}>Today's Expenses:</Text>
-                        <Text style={styles.todaysExTextRecord}>No record for today.</Text>
-                    </View>
-                </View>
-                <View style={styles.lineSeparator}></View>
-                <View style={styles.bottomButtonsContainer}>
-                    <Pressable
-                        style={({ pressed }) => [
-                            {
-                                backgroundColor: pressed ? 'darkblue' : '#3B4B69',
-                            },
-                            styles.circularButton,
-                        ]}
-                        onPress={() => {
-                            // Handle Home button press
-                        }}
-                    >
-                        <Svg width="40" height="40" viewBox="0 0 40 40">
-                            <Circle cx="20" cy="20" r="19" stroke="white" strokeWidth="2" fill="#3B4B69" />
-                            <Path d="M18 12V28M12 18H28" stroke="white" strokeWidth="2" />
-                        </Svg>
-                    </Pressable>
+  const fetchAccountData = async () => {
+    try {
+      const response = await fetch('ACCOUNT_API_ENDPOINT');
+      const data = await response.json();
+      setPersonData(data);
+    } catch (error) {
+      console.error('Error fetching Account API data:', error);
+    }
+  };
 
-                    <Pressable
-                        style={({ pressed }) => [
-                            {
-                                backgroundColor: pressed ? 'darkblue' : '#3B4B69',
-                            },
-                            styles.circularButton,
-                        ]}
-                        onPress={() => {
-                            // Handle Add button press
-                        }}
-                    >
-                        <Svg width="80" height="80" viewBox="0 0 40 40">
-                            <Circle cx="20" cy="20" r="19" stroke="#3B4B69" strokeWidth="2" fill="#6B88A5" />
-                            <Path d="M20 12V28M12 20H28" stroke="white" strokeWidth="2" />
-                        </Svg>
-                    </Pressable>
-                </View>
+  const fetchCircularButtonData = async () => {
+  };
+
+  useEffect(() => {
+    fetchHomeData();
+    fetchPersonData();
+  }, []);
+
+  const currentDate = new Date().toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+
+  return (
+    <ImageBackground
+      source={require('.././assets/homescreenbg.png')}
+      style={styles.backgroundImage}
+    >
+      <View style={styles.container}>
+        <Text style={styles.greetingStyle}>Good Morning, </Text>
+        <Text style={styles.greetingStyle}>Dawn Danseco!</Text>
+        <View style={styles.lineSeparator}></View>
+
+        <View style={styles.MonthandDateContainer}>
+          <View style={styles.MonthandDate}>
+            <Text style={styles.MonthandDateText}>November</Text>
+          </View>
+          <View style={styles.oblongSpace}></View>
+          <View style={styles.MonthandDate}>
+            <Text style={styles.MonthandDateText}>Today</Text>
+          </View>
+        </View>
+        <View style={styles.incomeExpensesContainer}>
+          <View style={styles.incomeBox}>
+            <Text style={styles.boxTitle}>Income</Text>
+            <View style={styles.amountContainer}>
+              <Icon name="arrow-up" size={25} color="white" />
+              <Text style={styles.amount}> ₱ {income}</Text>
             </View>
-            <ImageBackground
-                source={require('.././assets/welcomereminder.png')}
-                style={styles.backgroundImageReminder}
-            ></ImageBackground>
-        </ImageBackground>
-    );
+          </View>
+          <View style={styles.expensesBox}>
+            <Text style={styles.boxTitle}>Expenses</Text>
+            <View style={styles.amountContainer}>
+              <Icon name="arrow-down" size={25} color="white" />
+              <Text style={styles.amount}> ₱ {expenses}</Text>
+            </View>
+          </View>
+        </View>
+        <View style={styles.todaysExpenseContainer}>
+          <Text style={styles.dateText}>{currentDate}</Text>
+          <View style={styles.todaysEx}>
+            <Text style={styles.todaysExText}>Today's Expenses:</Text>
+            {personData ? (
+              <Text style={styles.todaysExTextRecord}>
+                Data from Person API: {JSON.stringify(personData)}
+              </Text>
+            ) : (
+              <Text style={styles.todaysExTextRecord}>No record for today.</Text>
+            )}
+          </View>
+        </View>
+        <View style={styles.lineSeparator}></View>
+        
+        <CircularButton onPress={() => fetchCircularButtonData()} />
+        <HomeButton onPress={() => homeData && console.log('Home button pressed with data:', homeData)} />
+        <AccountButton onPress={() => personData && console.log('Account button pressed with data:', personData)} />
+      </View>
+      <ImageBackground
+        source={require('.././assets/welcomereminder.png')}
+        style={styles.backgroundImageReminder}
+      ></ImageBackground>
+    </ImageBackground>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -234,29 +248,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 470,
         left: 65,
-    },
-    circularButton: {
-        height: 60,
-        width: 60,
-        borderRadius: 30,
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'absolute',
-        bottom: 20,
-        right: 20,
-        backgroundColor: '#3B4B69',
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 2,
-        elevation: 5,
-    },
-    bottomButtonsContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginBottom: 20,
-        top: 330,
-        right: 95,
     },
 });
 
