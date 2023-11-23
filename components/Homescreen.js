@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ImageBackground, StyleSheet } from 'react-native';
-import { CircularButton, HomeButton, AccountButton } from './NavBar';
+import { View, Text, ImageBackground, StyleSheet, Modal } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import NavBar from '.././components/NavBar';
+import Numpad from '.././components/NumPad';
+import Categories from '.././components/Categories';
 
 const Homescreen = () => {
   const [income, setIncome] = useState(0);
   const [expenses, setExpenses] = useState(0);
   const [homeData, setHomeData] = useState(null);
   const [personData, setPersonData] = useState(null);
+
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible1, setModalVisible1] = useState(false);
 
   const fetchHomeData = async () => {
     try {
@@ -54,33 +59,42 @@ const Homescreen = () => {
   });
 
   return (
-    <ImageBackground
-      source={require('.././assets/homescreenbg.png')}
-      style={styles.backgroundImage}
-    >
-      <View style={styles.container}>
-        <Text style={styles.greetingStyle}>Good Morning, </Text>
-        <Text style={styles.greetingStyle}>Dawn Danseco!</Text>
+    <View style={styles.backgroundImage}>
+        <Text style={{
+          marginLeft: 10,
+          marginTop: 50,
+          fontSize: 25,
+          fontWeight: 'bold',
+        }}>Good Morning, </Text>
+        <Text style={{
+          marginLeft: 10,
+          fontSize: 30,
+          fontWeight: 'bold',
+          marginBottom: 5,
+        }}>Dawn Danseco!</Text>
+
         <View style={styles.lineSeparator}></View>
 
-        <View style={styles.MonthandDateContainer}>
-          <View style={styles.MonthandDate}>
+        <View style={{marginHorizontal:15}}>
+
+        <View style={{flexDirection:"row",justifyContent:'space-between', marginVertical:10}}>
+          <View style={{backgroundColor:'#6B88A5',width:"49%",alignItems:'center',borderRadius:20,padding:5}}>
             <Text style={styles.MonthandDateText}>November</Text>
           </View>
-          <View style={styles.oblongSpace}></View>
-          <View style={styles.MonthandDate}>
+          <View style={{backgroundColor:'#6B88A5',width:"49%",alignItems:'center',borderRadius:20,padding:5}}>
             <Text style={styles.MonthandDateText}>Today</Text>
           </View>
         </View>
-        <View style={styles.incomeExpensesContainer}>
-          <View style={styles.incomeBox}>
+        
+        <View style={{flexDirection:"row",justifyContent:'space-between', marginVertical:5}}>
+          <View style={{backgroundColor:'#3B4B69',width:"49%",alignItems:'center',borderRadius:20,padding:20}}>
             <Text style={styles.boxTitle}>Income</Text>
             <View style={styles.amountContainer}>
               <Icon name="arrow-up" size={25} color="white" />
               <Text style={styles.amount}> ₱ {income}</Text>
             </View>
           </View>
-          <View style={styles.expensesBox}>
+          <View style={{backgroundColor:'#3B4B69',width:"49%",alignItems:'center',borderRadius:20,padding:20}}>
             <Text style={styles.boxTitle}>Expenses</Text>
             <View style={styles.amountContainer}>
               <Icon name="arrow-down" size={25} color="white" />
@@ -88,8 +102,17 @@ const Homescreen = () => {
             </View>
           </View>
         </View>
-        <View style={styles.todaysExpenseContainer}>
-          <Text style={styles.dateText}>{currentDate}</Text>
+      </View>
+
+      <View style={styles.lineSeparator}></View>
+
+      <View style={{padding:10}}>
+          <Text style={{
+            fontSize: 17,
+            fontWeight: 'bold'}}
+          >
+            {currentDate}
+          </Text>
           <View style={styles.todaysEx}>
             <Text style={styles.todaysExText}>Today's Expenses:</Text>
             {personData ? (
@@ -100,18 +123,36 @@ const Homescreen = () => {
               <Text style={styles.todaysExTextRecord}>No record for today.</Text>
             )}
           </View>
-        </View>
-        <View style={styles.lineSeparator}></View>
-        
-        <CircularButton onPress={() => fetchCircularButtonData()} />
-        <HomeButton onPress={() => homeData && console.log('Home button pressed with data:', homeData)} />
-        <AccountButton onPress={() => personData && console.log('Account button pressed with data:', personData)} />
       </View>
+        
       <ImageBackground
         source={require('.././assets/welcomereminder.png')}
         style={styles.backgroundImageReminder}
       ></ImageBackground>
-    </ImageBackground>
+
+      <NavBar 
+        homeButton={() => setModalVisible1(true)} 
+        centerButton={() => setModalVisible(true)}
+      />
+
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={modalVisible}
+      >
+        <Categories cancel={() => setModalVisible(false)} />
+      </Modal>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible1}
+      >
+        <Numpad 
+          enterClick={() => setModalVisible1(false)} 
+          updateIncome={(x) => setIncome(x)}/>
+      </Modal>
+      
+    </View>
   );
 };
 
@@ -119,6 +160,7 @@ const styles = StyleSheet.create({
     backgroundImage: {
         flex: 1,
         resizeMode: 'cover',
+        backgroundColor:'#F4F6F1'
     },
     container: {
         flex: 1,
@@ -132,12 +174,15 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
     },
     greetingStyle: {
-        fontSize: 25,
+        marginLeft: 30,
+        marginTop: 50,
+        fontSize: 30,
         fontWeight: 'bold',
         marginBottom: 5,
     },
     lineSeparator: {
         height: 5,
+        width: "100%",
         backgroundColor: '#6B88A5',
         marginVertical: 10,
         borderRadius: 13,
@@ -207,7 +252,7 @@ const styles = StyleSheet.create({
     },
     todaysExpenseContainer: {
         alignItems: 'flex-start',
-        marginTop: 5,
+        marginTop: 5
     },
     dateText: {
         fontSize: 15,
@@ -215,7 +260,7 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
     todaysEx: {
-        width: 300,
+        width: "100%",
         height: 60,
         backgroundColor: '#B3D2DD',
         marginTop: 10,
@@ -243,11 +288,11 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     backgroundImageReminder: {
-        height: 210,
-        width: 271,
+        height: 200,
+        width: 300,
         position: 'absolute',
-        top: 470,
-        left: 65,
+        bottom: 70,
+        right: 0,
     },
 });
 

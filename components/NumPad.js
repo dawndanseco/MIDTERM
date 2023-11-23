@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Svg, { Circle, Path } from 'react-native-svg';
-import { CircularButton, HomeButton, AccountButton } from './NavBar';
 
-const Numpad = ({ onKeyPress, onEnterPress, onDeletePress }) => {
+const Numpad = (props) => {
   const [enteredAmount, setEnteredAmount] = useState('');
 
   const handleKeyPress = (value) => {
@@ -17,25 +16,23 @@ const Numpad = ({ onKeyPress, onEnterPress, onDeletePress }) => {
 
   const handleEnterPress = () => {
     console.log('Entered Amount:', enteredAmount);
+    props.enterClick();
+    props.updateIncome(enteredAmount);
   };
 
   return (
-    <ImageBackground
-      source={require('.././assets/homescreenbg.png')} 
-      style={styles.backgroundImage}
-    >
+    <View style={styles.backgroundImage}>
       <View style={styles.container}>
         <View style={styles.enterAmountContainer}>
           <TextInput
             style={styles.enterAmountInput}
             placeholder="Enter Amount"
             value={enteredAmount}
-            keyboardType="numeric"
-            editable={false}
+            editable={true}
           />
         </View>
         <View style={styles.row}>
-          <Key text="1" onPress={() => handleKeyPress("1")} />
+          <Key text="1" onPress={() => setEnteredAmount("1")} />
           <Key text="2" onPress={() => handleKeyPress("2")} />
           <Key text="3" onPress={() => handleKeyPress("3")} />
         </View>
@@ -51,7 +48,7 @@ const Numpad = ({ onKeyPress, onEnterPress, onDeletePress }) => {
         </View>
         <View style={styles.row}>
           <TouchableOpacity style={styles.key} onPress={handleDeletePress}>
-            <Text style={styles.keyText}>Delete</Text>
+            <Text style={styles.keyText}>Del</Text>
           </TouchableOpacity>
           <Key text="0" onPress={() => handleKeyPress("0")} />
           <TouchableOpacity style={styles.key} onPress={() => handleKeyPress('.')}>
@@ -64,11 +61,7 @@ const Numpad = ({ onKeyPress, onEnterPress, onDeletePress }) => {
           <Text style={styles.keyText}>Enter</Text>
         </TouchableOpacity>
       </View>
-
-      <CircularButton onPress={() => console.log('Circular Button pressed')} />
-      <HomeButton onPress={() => console.log('Home Button pressed')} />
-      <AccountButton onPress={() => console.log('Account Button pressed')} />
-    </ImageBackground>
+    </View>
   );
 };
 
@@ -80,38 +73,38 @@ const Key = ({ text, onPress, style }) => (
 
 const styles = StyleSheet.create({
   enterAmountContainer: {
+    padding: 10,
     borderWidth: 2,
-    borderRadius: 10,
+    width: 300,
+    borderRadius: 30,
     backgroundColor:'white',
     borderColor: 'white',
     marginBottom: 20,
-    marginTop: 40,
-    elevation: 5,
+    elevation: 5
   },
   enterAmountInput: {
-    fontSize: 24,
+    fontSize: 25,
     fontWeight: 'bold',
-    color: 'white',
+    color: 'black',
     paddingHorizontal: 10,
   },
   container: {
     flexDirection: 'column',
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 0,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   key: {
-    width: 70,
-    height: 70,
+    width:100,
     borderRadius: 30,
     backgroundColor: '#3B4B69',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 3,
+    margin: 5,
     elevation: 5,
   },
   enterContainer: {
@@ -119,24 +112,25 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   enterKey: {
-    height: 70,
-    width: 140,
-    borderRadius: 30,
+    width: 150,
+    borderRadius: 10,
     backgroundColor: '#B3D2DD',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 2,
     elevation: 5,
   },
   keyText: {
-    fontSize: 18,
+    padding: 10,
+    fontSize: 25,
     fontWeight: 'bold',
     color: 'white',
   },
   backgroundImage: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
+    position:"absolute",
+    padding:50,
+    bottom:90,
+    width:"100%",
+    backgroundColor:"#F4F6F1",
     alignItems: 'center',
   },
 });
