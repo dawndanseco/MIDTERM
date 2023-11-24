@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Svg, { Circle, Path } from 'react-native-svg';
@@ -60,6 +60,10 @@ const AccountButton = (props) => {
 };
 
 const NavBar = (props) => {
+  const [isHome, setIsHome] = useState(false);
+  const [isCreate, setIsCreate] = useState(false);
+  const [isProfile, setIsProfile] = useState(false);
+
   return(
     <View style={styles.navbarstyle}>
       <HomeButton 
@@ -74,8 +78,6 @@ const NavBar = (props) => {
     </View>
   );
 }
-
-export default NavBar;
 
 const styles = {
   navbarstyle: {
@@ -120,4 +122,4 @@ const styles = {
   },
 };
 
-export { CircularButton, HomeButton, AccountButton };
+export default NavBar;

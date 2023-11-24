@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, StyleSheet, ImageBackground } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { CircularButton, HomeButton, AccountButton } from './NavBar';
 
 const Budget = () => {
   const incomeValue = '₱500';
@@ -35,9 +34,6 @@ const Budget = () => {
           </View>
         </View>
       </View>
-      <CircularButton onPress={() => console.log('Circular button pressed')} />
-      <HomeButton onPress={() => console.log('Home button pressed')} />
-      <AccountButton onPress={() => console.log('Account button pressed')} />
     </ImageBackground>
   );
 };

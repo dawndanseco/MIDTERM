@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, ImageBackground, StyleSheet, Modal } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+
 import NavBar from '.././components/NavBar';
 import Numpad from '.././components/NumPad';
 import OptionList from '.././components/OptionList';
 
-const Homescreen = () => {
+
+export default Homescreen = () => {
   const [income, setIncome] = useState(0);
   const [expenses, setExpenses] = useState(0);
   const [homeData, setHomeData] = useState(null);
@@ -158,29 +160,6 @@ const Homescreen = () => {
         source={require('.././assets/welcomereminder.png')}
         style={styles.backgroundImageReminder}
       ></ImageBackground>
-
-      <NavBar 
-        homeButton={() => setModalVisible1(true)} 
-        centerButton={() => setModalVisible(true)}
-      />
-
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={modalVisible}
-      >
-        <OptionList cancel={() => setModalVisible(false)} />
-      </Modal>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible1}
-      >
-        <Numpad 
-          enterClick={() => setModalVisible1(false)} 
-          updateIncome={(x) => setIncome(x)}/>
-      </Modal>
-      
     </View>
   );
 };
@@ -255,4 +234,3 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Homescreen;

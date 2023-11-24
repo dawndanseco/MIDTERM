@@ -7,6 +7,7 @@ const OptionList = (props) => {
   const [selected, setSelected] = useState('');
   const [income, setIncome] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible1, setModalVisible1] = useState(false);
 
   return (
     <View style={{position:'absolute',width:"100%",height:"100%",flexDirection:'column',alignItems:'center',justifyContent:'flex-end'}}>
@@ -21,20 +22,44 @@ const OptionList = (props) => {
         text="Add Income" 
         onPress={() =>  {
           console.log("income");
-          setSelected("income");
+          setSelected("1");
           setModalVisible(true);
         }} />
-      <Key text="Add Expense" onPress={() =>  {console.log("1")}} />
-      <Key text="Add Budget" onPress={() =>  {console.log("1")}} />
-      <Key text="Cancel" onPress={() => props.cancel()} style={{backgroundColor:'#FF5763'}}/>
+      <Key 
+        text="Add Expense" 
+        onPress={() => {
+          console.log("Expense");
+          setSelected("2");
+          setModalVisible1(true);
+        }} />
+      <Key 
+        text="Add Budget" 
+        onPress={() =>  {
+          console.log("Budget");
+          setSelected("3");
+          setModalVisible1(true);
+        }} />
+      <Key 
+        text="Cancel" 
+        onPress={() => props.cancel()} style={{backgroundColor:'#FF5763'}}
+      />
       <View style={{margin:50}}></View>
-      
       <Modal
-        animationType="fade"
+        animationType="slide"
         transparent={true}
         visible={modalVisible}
       >
-        <Categories cancel={() => props.cancel}/>
+        <Numpad 
+          enterClick={() => {setModalVisible(false);props.cancel();}} 
+          updateIncome={(x) => setIncome(x)}/>
+      </Modal>
+
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={modalVisible1}
+      >
+        <Categories cancel={() => setModalVisible1(false)}/>
       </Modal>
     </View>
   );
