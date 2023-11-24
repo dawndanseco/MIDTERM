@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Modal, View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Svg, { Circle, Path } from 'react-native-svg';
 import Numpad from '.././components/NumPad';
+import Categories from '.././components/Categories';
 
-const Categories = (props) => {
+const OptionList = (props) => {
   const [selected, setSelected] = useState('');
   const [income, setIncome] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
@@ -18,23 +17,24 @@ const Categories = (props) => {
         backgroundColor:'#3B4B69',
         opacity: 0.9
         }}></View>
-      <Key text="Monthly" onPress={() =>  {
-        console.log("income");
-        setSelected("income");
-        setModalVisible(true);
+      <Key 
+        text="Add Income" 
+        onPress={() =>  {
+          console.log("income");
+          setSelected("income");
+          setModalVisible(true);
         }} />
-      <Key text="Food" onPress={() =>  {console.log("1")}} />
-      <Key text="Transportation" onPress={() =>  {console.log("1")}} />
-      <Key text="Cancel" onPress={() => {props.cancel();console.log('hello')}} style={{backgroundColor:'#FF5763'}}/>
+      <Key text="Add Expense" onPress={() =>  {console.log("1")}} />
+      <Key text="Add Budget" onPress={() =>  {console.log("1")}} />
+      <Key text="Cancel" onPress={() => props.cancel()} style={{backgroundColor:'#FF5763'}}/>
       <View style={{margin:50}}></View>
+      
       <Modal
-        animationType="slide"
+        animationType="fade"
         transparent={true}
         visible={modalVisible}
       >
-        <Numpad 
-          enterClick={() => {setModalVisible(false);props.cancel();}} 
-          updateIncome={(x) => setIncome(x)}/>
+        <Categories cancel={() => props.cancel}/>
       </Modal>
     </View>
   );
@@ -64,4 +64,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Categories;
+export default OptionList;

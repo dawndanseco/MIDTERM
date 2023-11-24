@@ -3,7 +3,7 @@ import { View, Text, ImageBackground, StyleSheet, Modal } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import NavBar from '.././components/NavBar';
 import Numpad from '.././components/NumPad';
-import Categories from '.././components/Categories';
+import OptionList from '.././components/OptionList';
 
 const Homescreen = () => {
   const [income, setIncome] = useState(0);
@@ -77,24 +77,53 @@ const Homescreen = () => {
 
         <View style={{marginHorizontal:15}}>
 
-        <View style={{flexDirection:"row",justifyContent:'space-between', marginVertical:10}}>
-          <View style={{backgroundColor:'#6B88A5',width:"49%",alignItems:'center',borderRadius:20,padding:5}}>
+        <View style={{
+          flexDirection:"row",
+          justifyContent:'space-between',
+          marginVertical:10}}>
+
+          <View style={{
+            backgroundColor:'#6B88A5',
+            width:"49%",
+            alignItems:'center',
+            borderRadius:20,
+            padding:5}}>
             <Text style={styles.MonthandDateText}>November</Text>
           </View>
-          <View style={{backgroundColor:'#6B88A5',width:"49%",alignItems:'center',borderRadius:20,padding:5}}>
+
+          <View style={{
+            backgroundColor:'#6B88A5',
+            width:"49%",
+            alignItems:'center',
+            borderRadius:20,
+            padding:5}}>
             <Text style={styles.MonthandDateText}>Today</Text>
           </View>
         </View>
         
-        <View style={{flexDirection:"row",justifyContent:'space-between', marginVertical:5}}>
-          <View style={{backgroundColor:'#3B4B69',width:"49%",alignItems:'center',borderRadius:20,padding:20}}>
+        <View style={{
+          flexDirection:"row",
+          justifyContent:'space-between',
+          marginVertical:5}}>
+
+          <View style={{
+            backgroundColor:'#3B4B69',
+            width:"49%",
+            alignItems:'center',
+            borderRadius:20,
+            padding:20}}>
+
             <Text style={styles.boxTitle}>Income</Text>
             <View style={styles.amountContainer}>
               <Icon name="arrow-up" size={25} color="white" />
               <Text style={styles.amount}> ₱ {income}</Text>
             </View>
           </View>
-          <View style={{backgroundColor:'#3B4B69',width:"49%",alignItems:'center',borderRadius:20,padding:20}}>
+          <View style={{
+            backgroundColor:'#3B4B69',
+            width:"49%",alignItems:'center',
+            borderRadius:20,
+            padding:20}}>
             <Text style={styles.boxTitle}>Expenses</Text>
             <View style={styles.amountContainer}>
               <Icon name="arrow-down" size={25} color="white" />
@@ -140,7 +169,7 @@ const Homescreen = () => {
         transparent={true}
         visible={modalVisible}
       >
-        <Categories cancel={() => setModalVisible(false)} />
+        <OptionList cancel={() => setModalVisible(false)} />
       </Modal>
       <Modal
         animationType="slide"
@@ -162,23 +191,11 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
         backgroundColor:'#F4F6F1'
     },
-    container: {
-        flex: 1,
-        padding: 30,
-        marginTop: 40,
-    },
     boxTitle: {
         fontSize: 15,
         color: 'white',
         fontWeight: 'bold',
         alignSelf: 'flex-start',
-    },
-    greetingStyle: {
-        marginLeft: 30,
-        marginTop: 50,
-        fontSize: 30,
-        fontWeight: 'bold',
-        marginBottom: 5,
     },
     lineSeparator: {
         height: 5,
@@ -187,59 +204,10 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         borderRadius: 13,
     },
-    MonthandDateContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: 20,
-    },
-    MonthandDate: {
-        height: 26,
-        width: 130,
-        borderRadius: 13,
-        backgroundColor: '#3B4B69',
-        justifyContent: 'center',
-        alignItems: 'center',
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 2,
-        elevation: 5,
-    },
-    oblongSpace: {
-        width: 40,
-    },
     MonthandDateText: {
         color: 'white',
         fontSize: 16,
         fontWeight: 'bold',
-    },
-    incomeExpensesContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        height: 90,
-    },
-    incomeBox: {
-        flex: 1,
-        backgroundColor: '#6B88A5',
-        padding: 20,
-        borderRadius: 13,
-        marginRight: 30,
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 2,
-        elevation: 5,
-    },
-    expensesBox: {
-        flex: 1,
-        backgroundColor: '#3B4B69',
-        padding: 20,
-        borderRadius: 13,
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 2,
-        elevation: 5,
     },
     amount: {
         fontSize: 28,
@@ -249,15 +217,6 @@ const styles = StyleSheet.create({
     amountContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-    },
-    todaysExpenseContainer: {
-        alignItems: 'flex-start',
-        marginTop: 5
-    },
-    dateText: {
-        fontSize: 15,
-        fontWeight: 'bold',
-        marginTop: 10,
     },
     todaysEx: {
         width: "100%",

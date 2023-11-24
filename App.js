@@ -1,25 +1,33 @@
-import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { useState, useEffect } from 'react';
+import { View, Animated, Easing } from 'react-native';
 import Welcome from './components/Welcome';
 import Homescreen from './components/Homescreen';
-import NumPad from './components/NumPad';
-import Budget from './components/Budget';
-import NavBar from './components/NavBar';
-import Categories from './components/Categories';
 
 const App = () => {
+const [showComponent1, setShowComponent1] = useState(true);
+  const fadeAnim = new Animated.Value(1);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      Animated.timing(fadeAnim, {
+        toValue: 0,
+        duration: 1000,
+        easing: Easing.linear,
+        useNativeDriver: true,
+      }).start(() => {
+        setShowComponent1(false);
+      });
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }); 
+
   return (
-    <View style={styles.container}>
-      <Homescreen />
+    <View style={{flex:1}}>
+      {showComponent1 ? (<Animated.View style={{flex:1, opacity: fadeAnim }}><Welcome /></Animated.View>
+      ) : (<Homescreen />)}
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex:1,
-    backgroundColor: 'red',
-  },
-});
 
 export default App;

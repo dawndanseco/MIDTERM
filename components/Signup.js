@@ -99,11 +99,6 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         width: '90%',
     },
-    loginLabel: {
-        fontSize: 18,
-        marginBottom: 5,
-        fontWeight: 'bold',
-    },
     inputField: {
         height: 40,
         borderColor: '#F4F6F1',
